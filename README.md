@@ -1,2 +1,3 @@
-# notes
-data vis week 1 assignment 
+# visdown-template
+
+Starter template to get started with Visdown
