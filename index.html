@@ -16,13 +16,18 @@
   <style>
     #visdown-output {max-width: 800px; margin: 0 auto;}
     #visdown-input {display: none;}
+      p {font-family:helvetica;font-size: 12pt}
   </style>
 </head>
-<body>
+<body bgcolor="#f4f2f0">
+    
+<h1 style="font-family:helvetica;text-align:center;color:darkolivegreen;font-size: 60pt">A Tryst with Currency.</h1>
 
 <div id="visdown-input">
 
 # Bar Plot
+    
+    
 
 ```vis
 width: 900
@@ -41,13 +46,15 @@ encoding:
    aggregate: sum
    field: money
    type: quantitative
-   stack: normalize
+   stack: string
     axis:
      format: %
   color:
-   field: value
+   field: denom
    type: nominal
 ```
+The graph above is a temporal representation of the total sum of each type of note. What one infers from this is the impact on the economy that demonetisation of the high denomination notes would have. In the presence of increased restrictions on high value transactions in shares, bonds, gold, real estate, etc., unaccounted money is mainly stored in the form of cash. Declaration of high denomination notes as illegal will help in mobilizing the unaccounted money into formal channels- banks and other financial institutions, which will improve the availability of funds for productive purposes.
+    
 ```vis
 width: 900
 height: 600
@@ -62,10 +69,46 @@ encoding:
    field: number
    type: quantitative
   color:
-   field: value
+   field: denom
    type: nominal
    size:
     value: 10
+```
+```vis
+width: 900
+height: 600
+data:
+ url: data/notes.csv
+mark: bar
+encoding:
+  x:
+   field: year
+   type: nominal
+  y:
+   field: number
+   type: quantitative
+   stack: normalize
+  color:
+   field: denom
+   type: nominal
+```
+```vis
+width: 900
+height: 600
+data:
+ url: data/notes.csv
+mark: bar
+encoding:
+  x:
+   field: year
+   type: nominal
+  y:
+   field: money
+   type: quantitative
+   stack: normalize
+  color:
+   field: denom
+   type: nominal
 ```
 
 </div>
